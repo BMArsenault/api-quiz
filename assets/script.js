@@ -1,3 +1,40 @@
+// VARS
+var startButtonEl = document.querySelector('#btn-game')
+var currentQuestionIndex = 0;
+
+// Funcs
+function creatCurrentQuestion() {
+
+    // start timer
+
+    // check if questions weren't skipped
+    if (currentQuestionIndex < questions.length) {
+    //    console.log(question[currentQuestionIndex])
+    }
+}
+
+function handleClick () {
+    console.log("clicked");
+
+    creatCurrentQuestion();
+}
+function main () {
+//add start click event listener
+startButtonEl.addEventListener('click', handleClick);
+}
+// start
+
+// click
+
+// show first question
+// if more questions
+   //next question (creat question element)
+
+// else
+   // show score on high score page
+   // save score to local storage
+
+
 
 // attributes to timer
 // var timer = 60
@@ -8,6 +45,7 @@
 //             console.log("Time is up!");
 //         }
 // }
+
 
 
 // Questions
