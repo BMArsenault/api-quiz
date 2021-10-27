@@ -1,4 +1,13 @@
 
+// attributes to timer
+// var timer = 60
+// var countdown = function (){
+//     console.log(timer);
+//     timer--;
+//         if(timer === 0){
+//             console.log("Time is up!");
+//         }
+// }
 
 
 // Questions

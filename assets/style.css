@@ -22,13 +22,17 @@ p {
 .navbar-left {
     text-decoration: none;
     font-size: 20px;
+    float: left;
+    padding: 30px;
 }
 
 .navbar-right {
     font-size: 20px;
+    float: right;
+    padding: 30px;
 }
 
-.container {
+.home-text {
     display: flex;
     justify-content: center;
     align-items: center;
