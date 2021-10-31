@@ -3,6 +3,8 @@
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('btn-text'));
 const correctAnswerBonus = 10;
+const maxQuestions = 5;
+
 // const incorrectAnswer = -:10 seconds
 
 
@@ -84,8 +86,13 @@ startGame = () => {
 
 
 // Funcs
-// grab each question in random order
-function createNewQuestion() {
+// enter most recent score into local storage
+createNewQuestion = () => {
+    if (availableQuestions.length === 0 || questionCounter > maxQuestions) {
+        localStorage.setItem('mostRecentScore', score);
+    return window.location.assign("/end.html");
+}
+// grab following questions in random order
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
         currentQuestion = availableQuestions[questionIndex];
@@ -105,12 +112,12 @@ choices.forEach(choice => {
     choice.addEventListener("click", e => {
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
-
+// applying red or green class for correct or incorrect answers
         const classToApply =
             selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
             
         selectedChoice.parentElement.classList.add(classToApply);
-
+// set timer for color to disappear after a certain amount of time before showing next question
         setTimeout( () => {
             selectedChoice.parentElement.classList.remove(classToApply);
             createNewQuestion();
@@ -118,30 +125,19 @@ choices.forEach(choice => {
     });
 });
 
+function incrementScore () {
+
+}
+
 
     // start timer
-
-    // check if questions weren't skipped
-    // if (currentQuestionIndex < questions.length) {
-    //    console.log(question[currentQuestionIndex])
-    // }
 
 // function handleClick () {
 //     console.log("clicked");
 
-//     createNewQuestion();
 // }
 // function main () {
-// //add start click event listener
-// startButtonEl.addEventListener('click', handleClick);
-// }
-// start
 
-// click
-
-// show first question
-// if more questions
-   //next question (creat question element)
 
 // else
    // show score on high score page

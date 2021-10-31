@@ -69,9 +69,14 @@ p {
     margin-top: 20px;
     width: 100%;
     text-decoration: none;
+    justify-content: center;
 }
 
 .btn:hover {
+    cursor: pointer;
+}
+
+.btn-game:hover {
     cursor: pointer;
 }
 
@@ -93,4 +98,17 @@ p {
 
 .incorrect {
     background-color: red;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 30%;
+    font-size: 30px;
+
 }
