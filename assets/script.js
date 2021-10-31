@@ -6,66 +6,70 @@ const correctAnswerBonus = 10;
 // const incorrectAnswer = -:10 seconds
 
 
-
 var startButtonEl = document.querySelector('#btn-game')
-var currentQuestionIndex = 0;
+// start game at first question
+var currentQuestion = 0;
+// score to start at 0
 var score = 0;
+
 var questionCounter = 0;
-var availableQuestions = [];
-var timer = 60;
+// check available questions
+let availableQuestions = [];
+// timer at 60 seconds
+// var timer = 60;
 
 // Questions
 
 const questions = [
 {
-    question: "Write a question in here",
+    question: "Inside which HTML element do we put the JavaScript?",
     choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
+        "<js>",
+        "<scripting>",
+        "<script>",
+        "<javascript",
     ],
-    answer:  "Choice number 2"
+    answer:  3
 },
 {
-    question: "Write a question in here 2",
+    question: "What is meant by 'this' keyword in JavaScript",
     choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
+        "It refers current object",
+        "it refers previous object",
+        "It is a variable which contains value",
+        "None of the above",
     ],
-    answer:  "Choice number 3"
+    answer:  1
 },
 {
-    question: "Write a question in here 3",
+    question: "What are variables used for in JavaScript Programs?",
     choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
+        "Storing numbers, dates, or other values",
+        "Varying randomly",
+        "Causing high-school algebra flashbacks",
+        "None of the above",
     ],
-    answer:  "Choice number 1"
+    answer:  1
 },
 {
-    question: "Write a question in here 4",
+    question: "Which of the following is not JavaScript Data Types?",
     choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
+        "Undefined",
+        "Number",
+        "Boolean",
+        "Float",
     ],
-    answer:  "Choice number 4"
+    answer:  4
 },
 {
-    question: "Write a question in here 5",
+    question: "What are the types of Pop up boxes available in JavaScript?",
     choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
+        "Alert",
+        "Prompt",
+        "Confirm",
+        "All of the above",
     ],
-    answer:  "Choice number 2"
+    answer:  4
 },
 {
     question: "Write a question in here 6",
@@ -87,30 +91,51 @@ startGame = () => {
     score = 0;
     availableQuestions = [...questions];
     console.log(availableQuestions);
-    timer = 60;
+    // timer = 60 - 1 second;
+    // get current question
+    createNewQuestion();
 };
 
 
 // Funcs
-function creatCurrentQuestion() {
+
+function createNewQuestion() {
+    questionCounter++;
+    const questionIndex = Math.floor(Math.random() = availableQuestions.length);
+        currentQuestion = availableQuestions[questionIndex];
+        question.innerText = currentQuestion.question;
+
+answers.forEach(answer => {
+    const number = choice.answer['number'];
+    choice.innerText = currentQuestion['Answer' + number];
+})
+};
+
+// delete recently asked question from future question asked
+
+availableQuestions.splice(questionIndex, 1);
+
+// allow answer to be true
+
+
+
 
     // start timer
 
     // check if questions weren't skipped
-    if (currentQuestionIndex < questions.length) {
+    // if (currentQuestionIndex < questions.length) {
     //    console.log(question[currentQuestionIndex])
-    }
-}
+    // }
 
-function handleClick () {
-    console.log("clicked");
+// function handleClick () {
+//     console.log("clicked");
 
-    creatCurrentQuestion();
-}
-function main () {
-//add start click event listener
-startButtonEl.addEventListener('click', handleClick);
-}
+//     createNewQuestion();
+// }
+// function main () {
+// //add start click event listener
+// startButtonEl.addEventListener('click', handleClick);
+// }
 // start
 
 // click
