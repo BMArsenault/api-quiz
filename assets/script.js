@@ -2,7 +2,6 @@
 
 const question = document.getElementById('question');
 const choices = Array.from(document.getElementsByClassName('btn-text'));
-console.log(choices);
 const correctAnswerBonus = 10;
 // const incorrectAnswer = -:10 seconds
 
@@ -73,7 +72,6 @@ const questions = [
 // start game
 
 startGame = () => {
-    // if (availableQuestions === 0 || //timer equals 0), return to highscores.html
     
     questionCounter = 0;
     score = 0;
@@ -87,7 +85,7 @@ startGame = () => {
 
 // Funcs
 // grab each question in random order
-createNewQuestion = () => {
+function createNewQuestion() {
     questionCounter++;
     const questionIndex = Math.floor(Math.random() * availableQuestions.length);
         currentQuestion = availableQuestions[questionIndex];
@@ -98,20 +96,27 @@ createNewQuestion = () => {
         choice.innerText = currentQuestion['choice' + number];
     });
     //remove recently asked question
-    // availableQuestions.splice(questionIndex, 1);
+    availableQuestions.splice(questionIndex, 1);
 
-    // acceptingAnswers = true;
+    acceptingAnswers = true;
 };
+// add event listener for answers
+choices.forEach(choice => {
+    choice.addEventListener("click", e => {
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset["number"];
 
-// choices.forEach(choice => {
-//     choice.addEventListener("click", e => {
-//         if (!acceptingAnswers) return;
-//         const selectedChoice = e.target;
-//         const selectedAnswer = selectedChoice.dataset['number'];
-//         console.log(selectedAnswer);
-//         createNewQuestion();
-//     });
-// });
+        const classToApply =
+            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+            
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout( () => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            createNewQuestion();
+        }, 1000);
+    });
+});
 
 
     // start timer
