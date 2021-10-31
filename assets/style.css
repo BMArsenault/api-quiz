@@ -35,8 +35,23 @@ p {
 .home-text {
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.question-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-answer {
+    display: block;
+    justify-content: center;
     width: 80%;
+}
+
+.flex-center {
+    align-items: center;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     padding-top: 150px;
