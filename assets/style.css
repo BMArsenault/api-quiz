@@ -43,8 +43,8 @@ p {
     justify-content: center;
 }
 
-.btn-answer {
-    display: block;
+.answer-container {
+    display: inline-block;
     justify-content: center;
     width: 80%;
 }

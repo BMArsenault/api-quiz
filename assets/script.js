@@ -1,20 +1,26 @@
 // VARS & CONST
 
-const question = document.getElementById('questionText');
-const answers = Array.from(document.getElementsByClassName('btn-answer'));
+const question = document.getElementById('question');
+const choices = Array.from(document.getElementsByClassName('btn-text'));
+console.log(choices);
 const correctAnswerBonus = 10;
 // const incorrectAnswer = -:10 seconds
 
 
-var startButtonEl = document.querySelector('#btn-game')
+// var startButtonEl = document.querySelector('#btn-game')
 // start game at first question
 var currentQuestion = 0;
+
+// correct answer is true
+var acceptingAnswers = true;
+
 // score to start at 0
 var score = 0;
 
 var questionCounter = 0;
 // check available questions
-let availableQuestions = [];
+
+var availableQuestions = [];
 // timer at 60 seconds
 // var timer = 60;
 
@@ -23,101 +29,89 @@ let availableQuestions = [];
 const questions = [
 {
     question: "Inside which HTML element do we put the JavaScript?",
-    choices: [
-        "<js>",
-        "<scripting>",
-        "<script>",
-        "<javascript",
-    ],
+    choice1: "<js>",
+    choice2: "<scripting>",
+    choice3: "<script>",
+    choice4: "<javascript",
     answer:  3
 },
 {
     question: "What is meant by 'this' keyword in JavaScript",
-    choices: [
-        "It refers current object",
-        "it refers previous object",
-        "It is a variable which contains value",
-        "None of the above",
-    ],
+    choice1: "It refers current object",
+    choice2: "it refers previous object",
+    choice3: "It is a variable which contains value",
+    choice4: "None of the above",
     answer:  1
 },
 {
     question: "What are variables used for in JavaScript Programs?",
-    choices: [
-        "Storing numbers, dates, or other values",
-        "Varying randomly",
-        "Causing high-school algebra flashbacks",
-        "None of the above",
-    ],
+    choice1: "Storing numbers, dates, or other values",
+    choice2: "Varying randomly",
+    choice3: "Causing high-school algebra flashbacks",
+    choice4: "None of the above",
     answer:  1
 },
 {
     question: "Which of the following is not JavaScript Data Types?",
-    choices: [
-        "Undefined",
-        "Number",
-        "Boolean",
-        "Float",
-    ],
+    choice1: "Undefined",
+    choice2: "Number",
+    choice3: "Boolean",
+    choice4: "Float",
     answer:  4
 },
 {
     question: "What are the types of Pop up boxes available in JavaScript?",
-    choices: [
-        "Alert",
-        "Prompt",
-        "Confirm",
-        "All of the above",
-    ],
+    choice1: "Alert",
+    choice2: "Prompt",
+    choice3: "Confirm",
+    choice4: "All of the above",
     answer:  4
 },
-{
-    question: "Write a question in here 6",
-    choices: [
-        "Choice number 1",
-        "Choice number 2",
-        "Choice number 3",
-        "Choice number 4",
-    ],
-    answer:  "Choice number 2"
-}
 ]
 
 
 // start game
 
 startGame = () => {
+    // if (availableQuestions === 0 || //timer equals 0), return to highscores.html
+    
     questionCounter = 0;
     score = 0;
+    // show next available question
     availableQuestions = [...questions];
-    console.log(availableQuestions);
     // timer = 60 - 1 second;
-    // get current question
+    // get new question
     createNewQuestion();
 };
 
 
 // Funcs
-
-function createNewQuestion() {
+// grab each question in random order
+createNewQuestion = () => {
     questionCounter++;
-    const questionIndex = Math.floor(Math.random() = availableQuestions.length);
+    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
         currentQuestion = availableQuestions[questionIndex];
         question.innerText = currentQuestion.question;
+// attach choices with each question
+    choices.forEach(choice => {
+        const number = choice.dataset['number'];
+        choice.innerText = currentQuestion['choice' + number];
+    });
+    //remove recently asked question
+    // availableQuestions.splice(questionIndex, 1);
 
-answers.forEach(answer => {
-    const number = choice.answer['number'];
-    choice.innerText = currentQuestion['Answer' + number];
-})
+    // acceptingAnswers = true;
 };
 
-// delete recently asked question from future question asked
-
-availableQuestions.splice(questionIndex, 1);
-
-// allow answer to be true
-
-
+// choices.forEach(choice => {
+//     choice.addEventListener("click", e => {
+//         if (!acceptingAnswers) return;
+//         const selectedChoice = e.target;
+//         const selectedAnswer = selectedChoice.dataset['number'];
+//         console.log(selectedAnswer);
+//         createNewQuestion();
+//     });
+// });
 
 
     // start timer
