@@ -98,10 +98,10 @@ createNewQuestion = () => {
         currentQuestion = availableQuestions[questionIndex];
         question.innerText = currentQuestion.question;
 // attach choices with each question
-    choices.forEach(choice => {
+    choices.forEach((choice => {
         const number = choice.dataset['number'];
         choice.innerText = currentQuestion['choice' + number];
-    });
+    }));
     //remove recently asked question
     availableQuestions.splice(questionIndex, 1);
 
@@ -109,7 +109,10 @@ createNewQuestion = () => {
 };
 // add event listener for answers
 choices.forEach(choice => {
-    choice.addEventListener("click", e => {
+    choice.addEventListener("click", (e) => {
+        if (!acceptingAnswers) return;
+
+        acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset["number"];
 // applying red or green class for correct or incorrect answers
@@ -125,18 +128,11 @@ choices.forEach(choice => {
     });
 });
 
-function incrementScore () {
+incrementScore = num => {
+    score += num;
+    scoreText.innerText = score;
 
-}
-
-
-    // start timer
-
-// function handleClick () {
-//     console.log("clicked");
-
-// }
-// function main () {
+};
 
 
 // else
