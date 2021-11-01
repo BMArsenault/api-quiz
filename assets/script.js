@@ -5,7 +5,7 @@ const choices = Array.from(document.getElementsByClassName('btn-text'));
 const correctAnswerBonus = 10;
 const maxQuestions = 5;
 
-// const incorrectAnswer = -:10 seconds
+
 
 
 // var startButtonEl = document.querySelector('#btn-game')
@@ -22,8 +22,6 @@ var questionCounter = 0;
 // check available questions
 
 var availableQuestions = [];
-// timer at 60 seconds
-// var timer = 60;
 
 // Questions
 
@@ -70,6 +68,22 @@ const questions = [
 },
 ]
 
+// added timer to start at beginning of quiz
+var timeleft = 45;
+var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+        clearInterval(downloadTimer);
+        alert("You are out of time!");
+        window.location.assign("/");
+    }
+    document.getElementById("progressBar").value = 45 - timeleft;
+    timeleft -= 1;
+    if(selectedAnswer === 'incorrect'){
+        (timeleft - 10);
+    }
+
+}, 1000);
+
 
 // start game
 
@@ -79,7 +93,6 @@ startGame = () => {
     score = 0;
     // show next available question
     availableQuestions = [...questions];
-    // timer = 60 - 1 second;
     // get new question
     createNewQuestion();
 };
@@ -135,19 +148,4 @@ incrementScore = num => {
 };
 
 
-// else
-   // show score on high score page
-   // save score to local storage
-
-
-
-// attributes to timer
-// var timer = 60
-// var countdown = function (){
-//     console.log(timer);
-//     timer--;
-//         if(timer === 0){
-//             console.log("Time is up!");
-//         }
-// }
 startGame ();
